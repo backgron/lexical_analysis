@@ -1,0 +1,100 @@
+* {
+  margin: 0;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  min-width: 560px;
+  background-color: black;
+}
+
+#top {
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+}
+
+#side {
+  height: 100%;
+  width: 440px;
+  background-color: #e7e7e7;
+  border: 1px solid black;
+  position: fixed;
+  top: 0;
+  left: 20px;
+  text-align: center;
+}
+
+#mytext {
+  width: 90%;
+  height: 90%;
+  font-size: 24px;
+  padding: 1rem;
+  resize: none;
+  background: #ccc;
+  font-weight: 200;
+}
+
+#main-wraper {
+  /* width: 100%; */
+  height: 100%;
+  position: relative;
+  margin-left: 500px;
+  background-color: #ccc;
+  overflow: auto;
+  padding: 30px;
+}
+
+#main {
+  width: 90%;
+  height: 90%;
+  background-color: black;
+  background-attachment: fixed;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding-bottom: 10px;
+  /* overflow: hidden; */
+}
+
+#table {
+  font-size: 24px;
+  background-color: black;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  margin: auto;
+}
+
+#table td {
+  padding: 5px;
+}
+
+#关键字 {
+  color: palevioletred;
+}
+
+#界符 {
+  color: white;
+}
+
+#常量,
+#标识符 {
+  color: skyblue;
+}
+
+#运算符 {
+  color: yellow;
+}
+
+#错误 {
+  color: red;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="词法分析器.css" type="text/css" />
+    <script src="词法分析器.js"></script>
+    <script src="Element.js"></script>
+    <script src="template-web.js"></script>
+
+    <script type="text/x-art-template" id="temp1">
+      {{each comments}}
+      <tr id="{{$value.type}}">
+          <td>{{$value.text}}</td>
+          <td>{{$value.value}}</td>
+          <td>{{$value.type}}</td>
+      </tr>
+      {{/each}}
+    </script>
+  </head>
+
+  <body>
+    <div id="side">
+      <h4>请输入文字</h4>
+      <textarea id="mytext"></textarea>
+    </div>
+    <div id="main-wraper">
+      <div id="main">
+        <table id="table" border="1" ;>
+          <thead>
+            <td>词法数据</td>
+            <td>词法编号</td>
+            <td>词法类型</td>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script>
+    window.onresize = function () {
+      if (document.documentElement.clientWidth >= 1100) {
+        document.getElementById("side").style.display = "block";
+        document.getElementById("side").style.width = "430px";
+        document.getElementById("main-wraper").style.marginLeft = "450px";
+      } else if (document.documentElement.clientWidth <= 1100) {
+        document.getElementById("side").style.display = "block";
+        document.getElementById("side").style.width = "240px";
+        document.getElementById("main-wraper").style.marginLeft = "240px";
+      }
+    };
+    var mytext = document.getElementById("mytext");
+    var main = document.getElementById("main");
+
+    mytext.onkeyup = function () {
+      //判断输入是否为空
+      if (mytext.value == "" || mytext.value.length == 0) {
+        document.getElementById("tbody").innerHTML = "";
+      } else {
+        //用词法分析器分词，返回json数据
+        var elements = getElements(initStringToArray(mytext.value), json);
+        console.log(elements);
+        var com = {
+          comments: elements,
+        };
+        //将数据生成到页面
+        var html = template("temp1", com);
+        document.getElementById("tbody").innerHTML = html;
+      }
+
+      //生成数据时滚动条自动下滚
+      main.scrollTop = main.scrollHeight;
+      //加长main
+      main.style.height =
+        document.getElementById("wraper.height").offsetHeight + "px";
+    };
+  </script>
+</html>
